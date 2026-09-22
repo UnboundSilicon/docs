@@ -1,8 +1,17 @@
 RFM12
 =====
 
-Portable C driver for the HopeRF RFM12/RFM12B ISM-band FSK transceiver.
+Documentation for the Unbound Silicon RFM12 driver.
 
-.. note::
+.. toctree::
+   :maxdepth: 2
 
-   Documentation is under development.
+   introduction
+   getting-started
+   concepts
+   configuration
+   transmitting
+   receiving
+   status-register
+   error-handling
+   api-reference
