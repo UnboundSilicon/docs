@@ -7,6 +7,7 @@ Unbound Silicon Documentation
 =============================
 
 Documentation for Unbound Silicon projects.
+Software for silicon, not platforms.
 
 .. toctree::
    :maxdepth: 2
