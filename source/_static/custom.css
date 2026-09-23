@@ -1,0 +1,8 @@
+/* API function blocks */
+
+dl.c.function {
+    border: 1px solid var(--color-background-border);
+    border-radius: 6px;
+    padding: 1rem;
+    margin: 1.5rem 0;
+}
