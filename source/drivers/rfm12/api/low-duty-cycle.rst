@@ -47,6 +47,18 @@ Allow enough receiver on-time for the crystal oscillator, synthesizer, and
 PLL to start and for DQD to recognize valid data. An on-time that is too
 short can prevent reception even when the incoming signal is good.
 
+Data Types
+----------
+
+RFM12_low_duty_cycle_d_t
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. c:type:: uint8_t RFM12_low_duty_cycle_d_t
+
+   Raw duty-cycle parameter D, from 0 through 127, encoded in bits 7:1. It is not a
+   percentage. The nominal duty cycle is (2 * D + 1) / M * 100%, where M is the nonzero
+   wake-up timer multiplier.
+
 Command Functions
 -----------------
 

@@ -44,6 +44,112 @@ fields in the Data Filter Command. The setters and reset function update
 staged configuration without communicating with the radio. Use
 :c:func:`rfm12_apply_to_radio` to write the staged settings.
 
+Data Types
+----------
+
+RFM12_clock_recovery_mode_t
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. c:type:: RFM12_clock_recovery_mode_t
+
+   Enum. Automatic or manual clock recovery selection for bit 7.
+
+   .. list-table::
+      :header-rows: 1
+
+      * - Constant
+        - Value
+        - Meaning
+      * - ``RFM12_CLOCK_RECOVERY_MANUAL``
+        - ``0``
+        - Manual speed selection.
+      * - ``RFM12_CLOCK_RECOVERY_AUTO``
+        - ``1``
+        - Automatic clock recovery.
+
+
+RFM12_clock_recovery_speed_t
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. c:type:: RFM12_clock_recovery_speed_t
+
+   Enum. Manual clock recovery speed for bit 6. Used only with
+   RFM12_CLOCK_RECOVERY_MANUAL.
+
+   .. list-table::
+      :header-rows: 1
+
+      * - Constant
+        - Value
+        - Meaning
+      * - ``RFM12_CLOCK_RECOVERY_SLOW``
+        - ``0``
+        - Slow recovery.
+      * - ``RFM12_CLOCK_RECOVERY_FAST``
+        - ``1``
+        - Fast recovery.
+
+
+RFM12_filter_type_t
+~~~~~~~~~~~~~~~~~~~
+
+.. c:type:: RFM12_filter_type_t
+
+   Enum. Receive data filter selection for bit 4.
+
+   .. list-table::
+      :header-rows: 1
+
+      * - Constant
+        - Value
+        - Meaning
+      * - ``RFM12_FILTER_DIGITAL``
+        - ``0``
+        - Digital filter.
+      * - ``RFM12_FILTER_ANALOG_RC``
+        - ``1``
+        - Analog RC filter.
+
+
+RFM12_dqd_threshold_t
+~~~~~~~~~~~~~~~~~~~~~
+
+.. c:type:: RFM12_dqd_threshold_t
+
+   Enum. Data Quality Detector threshold for bits 2:0. Hardware supports 0 through 7;
+   the recommended operating range is 5 through 7.
+
+   .. list-table::
+      :header-rows: 1
+
+      * - Constant
+        - Value
+        - Meaning
+      * - ``RFM12_DQD_THRESHOLD_0``
+        - ``0``
+        - Threshold 0.
+      * - ``RFM12_DQD_THRESHOLD_1``
+        - ``1``
+        - Threshold 1.
+      * - ``RFM12_DQD_THRESHOLD_2``
+        - ``2``
+        - Threshold 2.
+      * - ``RFM12_DQD_THRESHOLD_3``
+        - ``3``
+        - Threshold 3.
+      * - ``RFM12_DQD_THRESHOLD_4``
+        - ``4``
+        - Threshold 4.
+      * - ``RFM12_DQD_THRESHOLD_5``
+        - ``5``
+        - Threshold 5.
+      * - ``RFM12_DQD_THRESHOLD_6``
+        - ``6``
+        - Threshold 6.
+      * - ``RFM12_DQD_THRESHOLD_7``
+        - ``7``
+        - Threshold 7.
+
 Command Functions
 -----------------
 

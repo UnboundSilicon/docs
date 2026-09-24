@@ -90,6 +90,19 @@ below describes the returned status word, not fields to be staged or written.
 The :ref:`status-read-helper-functions` decode a previously read status word.
 Only the command function communicates with the radio.
 
+Data Types
+----------
+
+RFM12_status_word_t
+~~~~~~~~~~~~~~~~~~~
+
+.. c:type:: uint16_t RFM12_status_word_t
+
+   Raw 16-bit radio status returned by :c:func:`rfm12_read_status` and consumed by the
+   status helpers on this page. Bits 15 and 13 depend on RX/TX mode. Bits 3:0 contain a
+   signed four-bit AFC offset; :c:func:`rfm12_status_afc_offset_steps` sign-extends it
+   to int8_t. This is a status snapshot, not staged driver state.
+
 Command Functions
 -----------------
 

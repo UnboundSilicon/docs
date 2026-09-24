@@ -36,6 +36,132 @@ fields in the TX Configuration Control Command. The setters and reset
 function update staged configuration without communicating with the radio.
 Use :c:func:`rfm12_apply_to_radio` to write the staged settings.
 
+Data Types
+----------
+
+RFM12_tx_fsk_polarity_t
+~~~~~~~~~~~~~~~~~~~~~~~
+
+.. c:type:: RFM12_tx_fsk_polarity_t
+
+   Enum. FSK data polarity selection for bit 8.
+
+   .. list-table::
+      :header-rows: 1
+
+      * - Constant
+        - Value
+        - Meaning
+      * - ``RFM12_TX_FSK_POLARITY_NORMAL``
+        - ``0``
+        - Logic 0 selects higher frequency; logic 1 selects lower frequency.
+      * - ``RFM12_TX_FSK_POLARITY_INVERTED``
+        - ``1``
+        - Logic 0 selects lower frequency; logic 1 selects higher frequency.
+
+
+RFM12_tx_fsk_deviation_t
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. c:type:: RFM12_tx_fsk_deviation_t
+
+   Enum. FSK frequency deviation for bits 7:4, in 15 kHz steps from 15 through 240 kHz.
+
+   .. list-table::
+      :header-rows: 1
+
+      * - Constant
+        - Value
+        - Meaning
+      * - ``RFM12_TX_FSK_DEVIATION_15KHZ``
+        - ``0``
+        - 15 kHz.
+      * - ``RFM12_TX_FSK_DEVIATION_30KHZ``
+        - ``1``
+        - 30 kHz.
+      * - ``RFM12_TX_FSK_DEVIATION_45KHZ``
+        - ``2``
+        - 45 kHz.
+      * - ``RFM12_TX_FSK_DEVIATION_60KHZ``
+        - ``3``
+        - 60 kHz.
+      * - ``RFM12_TX_FSK_DEVIATION_75KHZ``
+        - ``4``
+        - 75 kHz.
+      * - ``RFM12_TX_FSK_DEVIATION_90KHZ``
+        - ``5``
+        - 90 kHz.
+      * - ``RFM12_TX_FSK_DEVIATION_105KHZ``
+        - ``6``
+        - 105 kHz.
+      * - ``RFM12_TX_FSK_DEVIATION_120KHZ``
+        - ``7``
+        - 120 kHz.
+      * - ``RFM12_TX_FSK_DEVIATION_135KHZ``
+        - ``8``
+        - 135 kHz.
+      * - ``RFM12_TX_FSK_DEVIATION_150KHZ``
+        - ``9``
+        - 150 kHz.
+      * - ``RFM12_TX_FSK_DEVIATION_165KHZ``
+        - ``10``
+        - 165 kHz.
+      * - ``RFM12_TX_FSK_DEVIATION_180KHZ``
+        - ``11``
+        - 180 kHz.
+      * - ``RFM12_TX_FSK_DEVIATION_195KHZ``
+        - ``12``
+        - 195 kHz.
+      * - ``RFM12_TX_FSK_DEVIATION_210KHZ``
+        - ``13``
+        - 210 kHz.
+      * - ``RFM12_TX_FSK_DEVIATION_225KHZ``
+        - ``14``
+        - 225 kHz.
+      * - ``RFM12_TX_FSK_DEVIATION_240KHZ``
+        - ``15``
+        - 240 kHz.
+
+
+RFM12_tx_power_t
+~~~~~~~~~~~~~~~~
+
+.. c:type:: RFM12_tx_power_t
+
+   Enum. Output power attenuation relative to maximum output for bits 2:0. Values
+   describe relative attenuation in dB, not absolute output in dBm.
+
+   .. list-table::
+      :header-rows: 1
+
+      * - Constant
+        - Value
+        - Meaning
+      * - ``RFM12_TX_POWER_0DB``
+        - ``0``
+        - 0 dB.
+      * - ``RFM12_TX_POWER_MINUS_2_5DB``
+        - ``1``
+        - -2.5 dB.
+      * - ``RFM12_TX_POWER_MINUS_5DB``
+        - ``2``
+        - -5 dB.
+      * - ``RFM12_TX_POWER_MINUS_7_5DB``
+        - ``3``
+        - -7.5 dB.
+      * - ``RFM12_TX_POWER_MINUS_10DB``
+        - ``4``
+        - -10 dB.
+      * - ``RFM12_TX_POWER_MINUS_12_5DB``
+        - ``5``
+        - -12.5 dB.
+      * - ``RFM12_TX_POWER_MINUS_15DB``
+        - ``6``
+        - -15 dB.
+      * - ``RFM12_TX_POWER_MINUS_17_5DB``
+        - ``7``
+        - -17.5 dB.
+
 Command Functions
 ---------------------
 

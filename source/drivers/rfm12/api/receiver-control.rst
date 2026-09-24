@@ -41,6 +41,151 @@ fields in the Receiver Control Command. The setters and reset function
 update staged configuration without communicating with the radio. Use
 :c:func:`rfm12_apply_to_radio` to write the staged settings.
 
+Data Types
+----------
+
+RFM12_pin16_function_t
+~~~~~~~~~~~~~~~~~~~~~~
+
+.. c:type:: RFM12_pin16_function_t
+
+   Enum. Pin 16 function selection for bit 10.
+
+   .. list-table::
+      :header-rows: 1
+
+      * - Constant
+        - Value
+        - Meaning
+      * - ``RFM12_PIN16_INTERRUPT_IN``
+        - ``0``
+        - External interrupt input.
+      * - ``RFM12_PIN16_VDI_OUT``
+        - ``1``
+        - VDI output.
+
+
+RFM12_vdi_mode_t
+~~~~~~~~~~~~~~~~
+
+.. c:type:: RFM12_vdi_mode_t
+
+   Enum. Valid Data Indicator (VDI) response selection for bits 9:8.
+
+   .. list-table::
+      :header-rows: 1
+
+      * - Constant
+        - Value
+        - Meaning
+      * - ``RFM12_VDI_FAST``
+        - ``0``
+        - Fast response.
+      * - ``RFM12_VDI_MEDIUM``
+        - ``1``
+        - Medium response.
+      * - ``RFM12_VDI_SLOW``
+        - ``2``
+        - Slow response.
+      * - ``RFM12_VDI_ALWAYS``
+        - ``3``
+        - VDI always on.
+
+
+RFM12_rx_bandwidth_t
+~~~~~~~~~~~~~~~~~~~~
+
+.. c:type:: RFM12_rx_bandwidth_t
+
+   Enum. Receiver baseband bandwidth selection for bits 7:5. Encodings 0 and 7 are not
+   supported.
+
+   .. list-table::
+      :header-rows: 1
+
+      * - Constant
+        - Value
+        - Meaning
+      * - ``RFM12_RX_BANDWIDTH_400_KHZ``
+        - ``1``
+        - 400 kHz.
+      * - ``RFM12_RX_BANDWIDTH_340_KHZ``
+        - ``2``
+        - 340 kHz.
+      * - ``RFM12_RX_BANDWIDTH_270_KHZ``
+        - ``3``
+        - 270 kHz.
+      * - ``RFM12_RX_BANDWIDTH_200_KHZ``
+        - ``4``
+        - 200 kHz.
+      * - ``RFM12_RX_BANDWIDTH_134_KHZ``
+        - ``5``
+        - 134 kHz.
+      * - ``RFM12_RX_BANDWIDTH_67_KHZ``
+        - ``6``
+        - 67 kHz.
+
+
+RFM12_lna_gain_t
+~~~~~~~~~~~~~~~~
+
+.. c:type:: RFM12_lna_gain_t
+
+   Enum. Low-noise amplifier gain relative to maximum gain, encoded in bits 4:3.
+
+   .. list-table::
+      :header-rows: 1
+
+      * - Constant
+        - Value
+        - Meaning
+      * - ``RFM12_LNA_GAIN_0_DB``
+        - ``0``
+        - 0 dB.
+      * - ``RFM12_LNA_GAIN_M6_DB``
+        - ``1``
+        - -6 dB.
+      * - ``RFM12_LNA_GAIN_M14_DB``
+        - ``2``
+        - -14 dB.
+      * - ``RFM12_LNA_GAIN_M20_DB``
+        - ``3``
+        - -20 dB.
+
+
+RFM12_rssi_threshold_t
+~~~~~~~~~~~~~~~~~~~~~~
+
+.. c:type:: RFM12_rssi_threshold_t
+
+   Enum. RSSI detector threshold selection for bits 2:0. The effective threshold is the
+   selected threshold plus the LNA gain in dB. Encodings 6 and 7 are not supported.
+
+   .. list-table::
+      :header-rows: 1
+
+      * - Constant
+        - Value
+        - Meaning
+      * - ``RFM12_RSSI_THRESHOLD_M103_DBM``
+        - ``0``
+        - -103 dBm.
+      * - ``RFM12_RSSI_THRESHOLD_M97_DBM``
+        - ``1``
+        - -97 dBm.
+      * - ``RFM12_RSSI_THRESHOLD_M91_DBM``
+        - ``2``
+        - -91 dBm.
+      * - ``RFM12_RSSI_THRESHOLD_M85_DBM``
+        - ``3``
+        - -85 dBm.
+      * - ``RFM12_RSSI_THRESHOLD_M79_DBM``
+        - ``4``
+        - -79 dBm.
+      * - ``RFM12_RSSI_THRESHOLD_M73_DBM``
+        - ``5``
+        - -73 dBm.
+
 Command Functions
 -----------------
 

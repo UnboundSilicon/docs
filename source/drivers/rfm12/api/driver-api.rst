@@ -9,6 +9,120 @@ operate on software state without communicating with the radio.
 :c:func:`rfm12_apply_to_radio` and :c:func:`rfm12_software_reset` perform
 immediate SPI transfers through the configured HAL callback.
 
+Data Types
+----------
+
+RFM12_result_t
+~~~~~~~~~~~~~~
+
+.. c:type:: RFM12_result_t
+
+   Enum. Result returned by driver operations and the HAL callback. Zero indicates
+   success. Use :c:func:`rfm12_result_string` for a readable description.
+
+   .. list-table::
+      :header-rows: 1
+
+      * - Constant
+        - Value
+        - Meaning
+      * - ``RFM12_OK``
+        - ``0``
+        - Operation succeeded.
+      * - ``RFM12_ERROR_INVALID_HANDLE``
+        - ``1``
+        - The device handle is NULL.
+      * - ``RFM12_ERROR_INVALID_ARGUMENT``
+        - ``2``
+        - An argument is NULL, out of range, or unsupported.
+      * - ``RFM12_ERROR_INVALID_CONFIGURATION``
+        - ``3``
+        - Staged settings are inconsistent or prerequisites are not satisfied.
+      * - ``RFM12_ERROR_NO_INSTANCE_AVAILABLE``
+        - ``4``
+        - The static instance pool is exhausted.
+      * - ``RFM12_ERROR_NOT_INITIALIZED``
+        - ``5``
+        - The SPI HAL callback has not been configured.
+      * - ``RFM12_ERROR_UNKNOWN``
+        - ``6``
+        - Unspecified error.
+
+
+RFM12_mode_t
+~~~~~~~~~~~~
+
+.. c:type:: RFM12_mode_t
+
+   Enum. Operating mode tracked in software and returned by :c:func:`rfm12_get_mode`.
+   This is not a hardware status reading. Mode-entry helpers set it after a successful
+   transfer; acquisition, reset, and manual changes to mode-defining power bits can
+   leave it unknown.
+
+   .. list-table::
+      :header-rows: 1
+
+      * - Constant
+        - Value
+        - Meaning
+      * - ``RFM12_MODE_UNKNOWN``
+        - ``0``
+        - Mode is unknown.
+      * - ``RFM12_MODE_STANDBY``
+        - ``1``
+        - Crystal oscillator on; synthesizer, RX, TX, and baseband off.
+      * - ``RFM12_MODE_IDLE``
+        - ``2``
+        - Crystal oscillator and synthesizer on; RX, TX, and baseband off.
+      * - ``RFM12_MODE_RX``
+        - ``3``
+        - Receiver, baseband, synthesizer, and crystal oscillator on; TX off.
+      * - ``RFM12_MODE_TX``
+        - ``4``
+        - Transmitter, synthesizer, and crystal oscillator on; RX and baseband off.
+      * - ``RFM12_MODE_SLEEP``
+        - ``5``
+        - Receiver, transmitter, baseband, synthesizer, and crystal oscillator off.
+
+
+RFM12_t
+~~~~~~~
+
+.. c:type:: struct RFM12 RFM12_t
+
+   Opaque driver instance. Obtain a pointer with :c:func:`rfm12_get_instance`;
+   applications cannot access its fields or allocate it by value. Storage belongs to the
+   driver and remains valid for the program lifetime. Do not free it.
+
+RFM12_enable_t
+~~~~~~~~~~~~~~
+
+.. c:type:: bool RFM12_enable_t
+
+   Boolean enable/disable argument shared by command setters. RFM12_ENABLE is true and
+   RFM12_DISABLE is false. Interpret the argument according to the named setting; for
+   example, enabling the PLL dithering-disable setting disables dithering.
+
+.. c:macro:: RFM12_ENABLE
+
+   Enable value: ``((RFM12_enable_t)true)``.
+
+.. c:macro:: RFM12_DISABLE
+
+   Disable value: ``((RFM12_enable_t)false)``.
+
+RFM12_spi_transfer16_fn
+~~~~~~~~~~~~~~~~~~~~~~~
+
+.. c:type:: RFM12_result_t (*RFM12_spi_transfer16_fn)(void *context, uint16_t tx_word, uint16_t *rx_word)
+
+   Synchronous SPI transfer callback installed with :c:func:`rfm12_configure_hal`. The
+   context pointer is passed through unchanged and may be NULL. Transmit the 16-bit
+   tx_word and store the simultaneously received word through rx_word before returning.
+   The platform callback manages chip select for the complete transfer. Return RFM12_OK
+   on success or an RFM12_result_t error on failure; the driver propagates transfer
+   errors. Keep the callback and any context storage valid while the instance uses them.
+
 Instance Management
 -------------------
 

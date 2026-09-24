@@ -53,6 +53,58 @@ fields in the PLL Setting Command. The setters and reset function update
 staged configuration without communicating with the radio. Use
 :c:func:`rfm12_apply_to_radio` to write the staged settings.
 
+Data Types
+----------
+
+RFM12_pll_output_buffer_current_t
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. c:type:: RFM12_pll_output_buffer_current_t
+
+   Enum. PLL output buffer current selection for bits 6:5. These are raw selection
+   codes, not current values in amperes. Retain the power-on default for typical
+   applications.
+
+   .. list-table::
+      :header-rows: 1
+
+      * - Constant
+        - Value
+        - Meaning
+      * - ``RFM12_PLL_OUTPUT_BUFFER_CURRENT_0``
+        - ``0``
+        - Buffer current selection 0.
+      * - ``RFM12_PLL_OUTPUT_BUFFER_CURRENT_1``
+        - ``1``
+        - Buffer current selection 1.
+      * - ``RFM12_PLL_OUTPUT_BUFFER_CURRENT_2``
+        - ``2``
+        - Buffer current selection 2.
+      * - ``RFM12_PLL_OUTPUT_BUFFER_CURRENT_3``
+        - ``3``
+        - Buffer current selection 3.
+
+
+RFM12_pll_bandwidth_t
+~~~~~~~~~~~~~~~~~~~~~
+
+.. c:type:: RFM12_pll_bandwidth_t
+
+   Enum. PLL loop bandwidth selection for bit 0.
+
+   .. list-table::
+      :header-rows: 1
+
+      * - Constant
+        - Value
+        - Meaning
+      * - ``RFM12_PLL_BANDWIDTH_NORMAL``
+        - ``0``
+        - Normal bandwidth (default).
+      * - ``RFM12_PLL_BANDWIDTH_HIGH``
+        - ``1``
+        - Increased bandwidth.
+
 Command Functions
 -----------------
 

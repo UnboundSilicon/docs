@@ -27,6 +27,18 @@ The synchronization-pattern length is selected separately by
 In one-byte mode, the pattern consists of the programmable byte alone.
 In two-byte mode, the fixed byte ``0x2D`` precedes the programmable byte.
 
+Data Types
+----------
+
+RFM12_sync_pattern_t
+~~~~~~~~~~~~~~~~~~~~
+
+.. c:type:: uint8_t RFM12_sync_pattern_t
+
+   Programmable synchronization byte, from 0x00 through 0xFF. In two-byte mode it
+   follows the fixed 0x2D byte. Select the length with
+   :c:func:`rfm12_set_sync_pattern_length`.
+
 Command Functions
 -----------------
 

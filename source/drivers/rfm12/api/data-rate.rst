@@ -29,6 +29,55 @@ configuration without communicating with the radio. Use
 
 The getter returns the staged selection without reading from the radio.
 
+Data Types
+----------
+
+RFM12_data_rate_t
+~~~~~~~~~~~~~~~~~
+
+.. c:type:: RFM12_data_rate_t
+
+   Enum. Named nominal bit-rate presets. These enum values are preset indices, not bit
+   rates or raw register fields. The radio uses the nearest supported encoding for each
+   preset. RFM12_DATA_RATE_COUNT is a sentinel and is not accepted as a rate.
+
+   .. list-table::
+      :header-rows: 1
+
+      * - Constant
+        - Value
+        - Meaning
+      * - ``RFM12_DATA_RATE_1200``
+        - ``0``
+        - 1200 bits/s nominal.
+      * - ``RFM12_DATA_RATE_2400``
+        - ``1``
+        - 2400 bits/s nominal.
+      * - ``RFM12_DATA_RATE_4800``
+        - ``2``
+        - 4800 bits/s nominal.
+      * - ``RFM12_DATA_RATE_9600``
+        - ``3``
+        - 9600 bits/s nominal.
+      * - ``RFM12_DATA_RATE_19200``
+        - ``4``
+        - 19200 bits/s nominal.
+      * - ``RFM12_DATA_RATE_28800``
+        - ``5``
+        - 28800 bits/s nominal.
+      * - ``RFM12_DATA_RATE_38400``
+        - ``6``
+        - 38400 bits/s nominal.
+      * - ``RFM12_DATA_RATE_57600``
+        - ``7``
+        - 57600 bits/s nominal.
+      * - ``RFM12_DATA_RATE_115200``
+        - ``8``
+        - 115200 bits/s nominal.
+      * - ``RFM12_DATA_RATE_COUNT``
+        - ``9``
+        - Number of presets; not a valid selection.
+
 Command Functions
 -----------------
 

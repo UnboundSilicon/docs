@@ -46,6 +46,28 @@ setting the Power Management Command's ``ew`` bit at the end of each cycle.
 Because the enable setter is staged, apply the cleared setting before
 staging and applying the enabled setting.
 
+Data Types
+----------
+
+RFM12_wakeup_prescaler_t
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. c:type:: uint8_t RFM12_wakeup_prescaler_t
+
+   Wake-up timer exponent R, from 0 through 31, encoded in bits 12:8. The datasheet
+   recommends 0 through 29. Together with multiplier M, the period is 1.03 * M * 2^R +
+   0.5 milliseconds. R = 30 with M = 0 encodes the software-reset command; use
+   :c:func:`rfm12_software_reset` for reset.
+
+RFM12_wakeup_multiplier_t
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. c:type:: uint8_t RFM12_wakeup_multiplier_t
+
+   Wake-up timer multiplier M, from 0 through 255, encoded in bits 7:0. This is a raw
+   multiplier, not a period in milliseconds. See :c:type:`RFM12_wakeup_prescaler_t` for
+   the period formula.
+
 Command Functions
 -----------------
 

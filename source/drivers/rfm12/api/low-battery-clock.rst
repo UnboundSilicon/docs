@@ -39,6 +39,113 @@ The detector and clock output are enabled separately through
 The hardware ``eb`` bit enables the detector, while ``dc`` disables the
 clock output; the clock-output enable API handles this inverted polarity.
 
+Data Types
+----------
+
+RFM12_clock_output_frequency_t
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. c:type:: RFM12_clock_output_frequency_t
+
+   Enum. Microcontroller clock output frequency for bits 7:5. Output enable is
+   controlled separately by :c:func:`rfm12_set_clock_output_enable`.
+
+   .. list-table::
+      :header-rows: 1
+
+      * - Constant
+        - Value
+        - Meaning
+      * - ``RFM12_CLOCK_OUTPUT_1MHZ``
+        - ``0``
+        - 1 MHz.
+      * - ``RFM12_CLOCK_OUTPUT_1_25MHZ``
+        - ``1``
+        - 1.25 MHz.
+      * - ``RFM12_CLOCK_OUTPUT_1_66MHZ``
+        - ``2``
+        - 1.66 MHz.
+      * - ``RFM12_CLOCK_OUTPUT_2MHZ``
+        - ``3``
+        - 2 MHz.
+      * - ``RFM12_CLOCK_OUTPUT_2_5MHZ``
+        - ``4``
+        - 2.5 MHz.
+      * - ``RFM12_CLOCK_OUTPUT_3_33MHZ``
+        - ``5``
+        - 3.33 MHz.
+      * - ``RFM12_CLOCK_OUTPUT_5MHZ``
+        - ``6``
+        - 5 MHz.
+      * - ``RFM12_CLOCK_OUTPUT_10MHZ``
+        - ``7``
+        - 10 MHz.
+
+
+RFM12_low_battery_threshold_t
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. c:type:: RFM12_low_battery_threshold_t
+
+   Enum. Low-battery detector threshold for bits 3:0: 2.25 V plus 0.10 V times the
+   encoded value. Detector enable is controlled separately by
+   :c:func:`rfm12_set_low_battery_detector_enable`.
+
+   .. list-table::
+      :header-rows: 1
+
+      * - Constant
+        - Value
+        - Meaning
+      * - ``RFM12_LOW_BATTERY_THRESHOLD_2_25V``
+        - ``0``
+        - 2.25 V.
+      * - ``RFM12_LOW_BATTERY_THRESHOLD_2_35V``
+        - ``1``
+        - 2.35 V.
+      * - ``RFM12_LOW_BATTERY_THRESHOLD_2_45V``
+        - ``2``
+        - 2.45 V.
+      * - ``RFM12_LOW_BATTERY_THRESHOLD_2_55V``
+        - ``3``
+        - 2.55 V.
+      * - ``RFM12_LOW_BATTERY_THRESHOLD_2_65V``
+        - ``4``
+        - 2.65 V.
+      * - ``RFM12_LOW_BATTERY_THRESHOLD_2_75V``
+        - ``5``
+        - 2.75 V.
+      * - ``RFM12_LOW_BATTERY_THRESHOLD_2_85V``
+        - ``6``
+        - 2.85 V.
+      * - ``RFM12_LOW_BATTERY_THRESHOLD_2_95V``
+        - ``7``
+        - 2.95 V.
+      * - ``RFM12_LOW_BATTERY_THRESHOLD_3_05V``
+        - ``8``
+        - 3.05 V.
+      * - ``RFM12_LOW_BATTERY_THRESHOLD_3_15V``
+        - ``9``
+        - 3.15 V.
+      * - ``RFM12_LOW_BATTERY_THRESHOLD_3_25V``
+        - ``10``
+        - 3.25 V.
+      * - ``RFM12_LOW_BATTERY_THRESHOLD_3_35V``
+        - ``11``
+        - 3.35 V.
+      * - ``RFM12_LOW_BATTERY_THRESHOLD_3_45V``
+        - ``12``
+        - 3.45 V.
+      * - ``RFM12_LOW_BATTERY_THRESHOLD_3_55V``
+        - ``13``
+        - 3.55 V.
+      * - ``RFM12_LOW_BATTERY_THRESHOLD_3_65V``
+        - ``14``
+        - 3.65 V.
+      * - ``RFM12_LOW_BATTERY_THRESHOLD_3_75V``
+        - ``15``
+        - 3.75 V.
+
 Command Functions
 -----------------
 

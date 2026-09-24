@@ -44,6 +44,83 @@ The :ref:`fifo-reset-mode-helper-functions` section describes the operation
 for restarting synchronization-pattern recognition. Unlike the staged
 setters, this helper communicates with the radio immediately.
 
+Data Types
+----------
+
+RFM12_sync_pattern_length_t
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. c:type:: RFM12_sync_pattern_length_t
+
+   Enum. Synchronization length for bit 3. One-byte mode uses the programmable byte;
+   two-byte mode uses 0x2D followed by the programmable byte. The encoded values are not
+   byte counts.
+
+   .. list-table::
+      :header-rows: 1
+
+      * - Constant
+        - Value
+        - Meaning
+      * - ``RFM12_SYNC_PATTERN_2BYTE``
+        - ``0``
+        - Two synchronization bytes.
+      * - ``RFM12_SYNC_PATTERN_1BYTE``
+        - ``1``
+        - One synchronization byte.
+
+
+RFM12_fifo_fill_start_t
+~~~~~~~~~~~~~~~~~~~~~~~
+
+.. c:type:: RFM12_fifo_fill_start_t
+
+   Enum. FIFO fill-start condition for bit 2. FIFO filling must also be enabled with
+   :c:func:`rfm12_set_rx_fifo_fill_enable`.
+
+   .. list-table::
+      :header-rows: 1
+
+      * - Constant
+        - Value
+        - Meaning
+      * - ``RFM12_FIFO_FILL_AFTER_SYNC``
+        - ``0``
+        - Start filling after synchronization is detected.
+      * - ``RFM12_FIFO_FILL_ALWAYS``
+        - ``1``
+        - Fill without waiting for synchronization.
+
+
+RFM12_reset_mode_t
+~~~~~~~~~~~~~~~~~~
+
+.. c:type:: RFM12_reset_mode_t
+
+   Enum. Sensitive-reset selection for bit 0.
+
+   .. list-table::
+      :header-rows: 1
+
+      * - Constant
+        - Value
+        - Meaning
+      * - ``RFM12_RESET_MODE_SENSITIVE``
+        - ``0``
+        - Sensitive reset enabled.
+      * - ``RFM12_RESET_MODE_NON_SENSITIVE``
+        - ``1``
+        - Sensitive reset disabled.
+
+
+RFM12_fifo_interrupt_level_t
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. c:type:: uint8_t RFM12_fifo_interrupt_level_t
+
+   FIFO interrupt threshold in bits, from 1 through 15, encoded in bits 7:4. Zero is not
+   accepted. This is a bit count, not a byte count.
+
 Command Functions
 -----------------
 

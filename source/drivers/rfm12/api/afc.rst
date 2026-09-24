@@ -45,6 +45,64 @@ fields in the AFC Command. The setters and reset function update staged
 configuration without communicating with the radio. Use
 :c:func:`rfm12_apply_to_radio` to write the staged settings.
 
+Data Types
+----------
+
+RFM12_afc_mode_t
+~~~~~~~~~~~~~~~~
+
+.. c:type:: RFM12_afc_mode_t
+
+   Enum. Automatic frequency control operating mode for bits 7:6. The descriptions below
+   follow the encoded hardware behavior.
+
+   .. list-table::
+      :header-rows: 1
+
+      * - Constant
+        - Value
+        - Meaning
+      * - ``RFM12_AFC_MODE_OFF``
+        - ``0``
+        - Automatic operation off; microcontroller controls the strobe.
+      * - ``RFM12_AFC_MODE_ON``
+        - ``1``
+        - Run once after each power-up.
+      * - ``RFM12_AFC_MODE_ON_AFTER_RECEIVING``
+        - ``2``
+        - Retain offset during reception while VDI is high.
+      * - ``RFM12_AFC_MODE_KEEP_OFFSET_ON_RECEIVE``
+        - ``3``
+        - Retain offset independently of VDI.
+
+
+RFM12_afc_range_t
+~~~~~~~~~~~~~~~~~
+
+.. c:type:: RFM12_afc_range_t
+
+   Enum. AFC offset range limit for bits 5:4. One offset step is 2.5 kHz, 5 kHz, or 7.5
+   kHz in the 433, 868, or 915 MHz band, respectively.
+
+   .. list-table::
+      :header-rows: 1
+
+      * - Constant
+        - Value
+        - Meaning
+      * - ``RFM12_AFC_RANGE_UNRESTRICTED``
+        - ``0``
+        - Unrestricted.
+      * - ``RFM12_AFC_RANGE_15_TO_16``
+        - ``1``
+        - -16 through +15 steps.
+      * - ``RFM12_AFC_RANGE_7_TO_8``
+        - ``2``
+        - -8 through +7 steps.
+      * - ``RFM12_AFC_RANGE_3_TO_4``
+        - ``3``
+        - -4 through +3 steps.
+
 Command Functions
 -----------------
 
