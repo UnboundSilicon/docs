@@ -12,6 +12,27 @@ immediate SPI transfers through the configured HAL callback.
 Data Types
 ----------
 
+RFM12_t
+~~~~~~~
+
+.. c:type:: struct RFM12 RFM12_t
+
+   Opaque driver instance. Obtain a pointer with :c:func:`rfm12_get_instance`;
+   applications cannot access its fields or allocate it by value. Storage belongs to the
+   driver and remains valid for the program lifetime. Do not free it.
+
+RFM12_spi_transfer16_fn
+~~~~~~~~~~~~~~~~~~~~~~~
+
+.. c:type:: RFM12_result_t (*RFM12_spi_transfer16_fn)(void *context, uint16_t tx_word, uint16_t *rx_word)
+
+   Synchronous SPI transfer callback installed with :c:func:`rfm12_configure_hal`. The
+   context pointer is passed through unchanged and may be NULL. Transmit the 16-bit
+   tx_word and store the simultaneously received word through rx_word before returning.
+   The platform callback manages chip select for the complete transfer. Return RFM12_OK
+   on success or an RFM12_result_t error on failure; the driver propagates transfer
+   errors. Keep the callback and any context storage valid while the instance uses them.
+
 RFM12_result_t
 ~~~~~~~~~~~~~~
 
@@ -49,6 +70,23 @@ RFM12_result_t
         - Unspecified error.
 
 
+RFM12_enable_t
+~~~~~~~~~~~~~~
+
+.. c:type:: bool RFM12_enable_t
+
+   Boolean enable/disable argument shared by command setters. RFM12_ENABLE is true and
+   RFM12_DISABLE is false. Interpret the argument according to the named setting; for
+   example, enabling the PLL dithering-disable setting disables dithering.
+
+.. c:macro:: RFM12_ENABLE
+
+   Enable value: ``((RFM12_enable_t)true)``.
+
+.. c:macro:: RFM12_DISABLE
+
+   Disable value: ``((RFM12_enable_t)false)``.
+
 RFM12_mode_t
 ~~~~~~~~~~~~
 
@@ -84,44 +122,6 @@ RFM12_mode_t
         - ``5``
         - Receiver, transmitter, baseband, synthesizer, and crystal oscillator off.
 
-
-RFM12_t
-~~~~~~~
-
-.. c:type:: struct RFM12 RFM12_t
-
-   Opaque driver instance. Obtain a pointer with :c:func:`rfm12_get_instance`;
-   applications cannot access its fields or allocate it by value. Storage belongs to the
-   driver and remains valid for the program lifetime. Do not free it.
-
-RFM12_enable_t
-~~~~~~~~~~~~~~
-
-.. c:type:: bool RFM12_enable_t
-
-   Boolean enable/disable argument shared by command setters. RFM12_ENABLE is true and
-   RFM12_DISABLE is false. Interpret the argument according to the named setting; for
-   example, enabling the PLL dithering-disable setting disables dithering.
-
-.. c:macro:: RFM12_ENABLE
-
-   Enable value: ``((RFM12_enable_t)true)``.
-
-.. c:macro:: RFM12_DISABLE
-
-   Disable value: ``((RFM12_enable_t)false)``.
-
-RFM12_spi_transfer16_fn
-~~~~~~~~~~~~~~~~~~~~~~~
-
-.. c:type:: RFM12_result_t (*RFM12_spi_transfer16_fn)(void *context, uint16_t tx_word, uint16_t *rx_word)
-
-   Synchronous SPI transfer callback installed with :c:func:`rfm12_configure_hal`. The
-   context pointer is passed through unchanged and may be NULL. Transmit the 16-bit
-   tx_word and store the simultaneously received word through rx_word before returning.
-   The platform callback manages chip select for the complete transfer. Return RFM12_OK
-   on success or an RFM12_result_t error on failure; the driver propagates transfer
-   errors. Keep the callback and any context storage valid while the instance uses them.
 
 Instance Management
 -------------------
