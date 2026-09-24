@@ -64,12 +64,18 @@ def process_api_indexes(app, doctree, fromdocname):
                 item = nodes.list_item()
                 paragraph = nodes.paragraph()
 
+                display_text = (
+                    f"{dispname}()"
+                    if objtype == "function"
+                    else dispname
+                )
+
                 reference = make_refnode(
                     app.builder,
                     fromdocname,
                     docname,
                     anchor,
-                    nodes.literal(text=dispname),
+                    nodes.literal(text=display_text),
                     dispname,
                 )
 
