@@ -30,3 +30,8 @@ The RFM12 API reference is under development.
      api/low-duty-cycle
      api/low-battery-clock
      api/status-read
+
+.. toctree::
+   :maxdepth: 1
+
+   API Index <api-index>
